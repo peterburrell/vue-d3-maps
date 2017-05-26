@@ -46,7 +46,7 @@ export default {
     },
     graticule() {
       const path = geoPath(this._projection);
-      return path(graticule);
+      return path(graticule());
     },
     land() {
       const path = geoPath(this._projection);
@@ -58,7 +58,7 @@ export default {
     }
   },
   created() {
-    console.log(this.graticule);
+    //console.log(graticule());
   }
 }
 </script>
