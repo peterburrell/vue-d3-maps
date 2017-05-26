@@ -1,12 +1,15 @@
 <template>
   <div id="app">
-    <world-map :width="900" :height="600" :projection="projection"></world-map>
-    <br/>
-    <select v-model="projection">
-      <option v-for="p in projections" :value="p">
-        {{ p }}
-      </option>
-    </select>
+    <div class="map-options">
+      <input type="number" v-model="width"/>
+      <input type="number" v-model="height"/>
+      <select v-model="projection">
+        <option v-for="p in projections" :value="p">
+          {{ p }}
+        </option>
+      </select>
+    </div>
+    <world-map :width="width" :height="height" :projection="projection"></world-map>
   </div>
 </template>
 
@@ -18,6 +21,8 @@ export default {
   components: { WorldMap },
   data () {
     return {
+      width: 1200,
+      height: 800,
       projection: 'mercator',
       projections: ['mercator', 'orthographic', 'stereographic', 'conic']
     }
@@ -30,9 +35,13 @@ export default {
     font-size: 14px;
   }
 
-  select {
+  input, select {
     font-size: inherit;
     padding: 5px;
-    border-color: #ddd;
+    border: 1px solid #ddd;
+  }
+
+  .map-options {
+    margin-bottom: 10px;
   }
 </style>
