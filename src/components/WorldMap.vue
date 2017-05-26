@@ -8,20 +8,14 @@
 
 <script>
 import * as topojson from "topojson-client";
-import { geoMercator, geoOrthographic, geoStereographic, geoConicEqualArea, geoGraticule, geoPath } from "d3-geo";
+import { geoGraticule, geoPath } from "d3-geo";
 import world from 'world-atlas/world/110m.json';
+
+import projections from './projections';
 
 const land = topojson.feature(world, world.objects.land);
 const countries = topojson.mesh(world, world.objects.countries, function(a, b) { return a !== b; });
 const graticule = geoGraticule();
-
-// todo: move this into its own module
-const projections = {
-  'mercator': geoMercator,
-  'orthographic': geoOrthographic,
-  'stereographic': geoStereographic,
-  'conic': geoConicEqualArea
-};
 
 export default {
   props: {

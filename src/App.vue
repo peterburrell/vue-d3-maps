@@ -15,6 +15,7 @@
 
 <script>
 import WorldMap from './components/WorldMap.vue';
+import projections from './components/projections';
 
 export default {
   name: 'app',
@@ -24,7 +25,7 @@ export default {
       width: 1200,
       height: 800,
       projection: 'mercator',
-      projections: ['mercator', 'orthographic', 'stereographic', 'conic']
+      projections: Object.keys(projections)
     }
   }
 }
